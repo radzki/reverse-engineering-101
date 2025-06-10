@@ -1,4 +1,4 @@
-# Reverse Engineering 101 - Mindbody Offsite presentation
+# Reverse Engineering 101 - 2025 PDE Offsite - HW & BW Learning Lab!
 
 ## What is reverse engineering (in general)
 
