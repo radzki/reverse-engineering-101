@@ -81,7 +81,10 @@ This can be patched in multiple ways, we can alter the password_check function t
 
 💡 There are more than 25 billion valid passwords for this one
 
-## If we have time:
+# If we have time:
+
+<details>
+<summary>Do it yourself!!</summary>
 
 ## GCC Installation Guide
 
@@ -143,8 +146,6 @@ Then run:
 
 [NationalSecurityAgency/ghidra: Ghidra is a software reverse engineering (SRE) framework](https://github.com/NationalSecurityAgency/ghidra?tab=readme-ov-file#install)
 
----
-
 # Tools
 
 - https://linux.die.net/man/1/strings
@@ -153,3 +154,5 @@ Then run:
 - https://github.com/NationalSecurityAgency/ghidra
 - https://github.com/LaurieWired/GhidraMCP
 - https://hex-rays.com/ida-free
+
+</details>
