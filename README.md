@@ -1,4 +1,5 @@
-# Reverse Engineering 101
+# Reverse Engineering 101 - Mindbody Offsite presentation
+
 ## What is reverse engineering (in general)
 
 Reverse engineering is the process of discovering the principles of a device, object, or system through analysis of its structure, function, and operation. It involves taking something apart to understand how it works, often without having access to the original design documentation or source materials.
@@ -37,6 +38,24 @@ The process often involves:
 3. **Pattern recognition** - identifying common programming constructs and algorithms
 4. **Hypothesis testing** - making educated guesses about functionality and testing them
 
+## From Source Code to Machine Code: The Compilation Journey
+
+When you write C code, you're creating human-readable instructions that describe what you want the computer to do. However, processors don't understand C - they only understand machine code, which consists of binary patterns representing specific processor instructions.
+
+The compilation process transforms your source code through several stages:
+
+**1. Preprocessing** - The preprocessor handles directives like `#include` and `#define`, essentially copy-pasting header files and expanding macros to create a single, expanded source file.
+
+**2. Compilation** - The compiler translates your C code into assembly language, which uses human-readable mnemonics (like `mov`, `add`, `cmp`) to represent processor instructions. This is where your variables get assigned to memory locations or CPU registers, and your control flow (`if`, `while`, `for`) becomes conditional jumps and branches.
+
+**3. Assembly** - The assembler converts assembly language into object code - actual machine instructions represented as binary numbers. Your `printf("Hello")` becomes a series of bytes that tell the processor exactly which registers to use and which memory addresses to access.
+
+**4. Linking** - The linker combines your object file with library code (like the standard C library) and resolves all function calls and memory addresses, producing the final executable binary.
+
+The resulting binary file contains pure machine code - sequences of bytes that the processor can execute directly. When you run `./your_program`, the operating system loads these bytes into memory and tells the CPU to start executing them.
+
+This is why reverse engineering is challenging: we're trying to work backwards from those raw bytes to understand the original programmer's intent, without the helpful variable names, comments, or high-level structure that existed in the source code.
+
 Modern tools like Ghidra, IDA Pro, and x64dbg make this process more accessible, but the fundamental skill is learning to think like both the original programmer and the computer executing the code.
 
 For our examples, we'll see how even simple password checks can be understood and bypassed through careful analysis of what the program actually does versus what it appears to do.
@@ -49,6 +68,11 @@ We’ll be performing mainly static analysis.
 
 The beauty of reverse engineering/cracking is that there is not just one correct answer or way to do it. Usually you can achieve the same goal using different techniques, ranging from brute forcing to patching.
 
+Tools:
+
+- Usually, I start with running [strings](https://linux.die.net/man/1/strings) against a file. It can give us some intereseting insights!
+- We can also use [objdump](https://linux.die.net/man/1/objdump) to directly see
+
 ## First Binary
 
 The first binary is pretty simple, there is actually no need for a specific reverse engineering software like GHidra.
@@ -57,12 +81,7 @@ The first binary is pretty simple, there is actually no need for a specific reve
 
 This can be patched in multiple ways, we can alter the password_check function to always return true, or we can patch the branch operation that checks for the debug flag… The coolest way, in my opinion, is to always try and understand the original code and the original intention of the developer(s).
 
-<aside>
-💡
-
-There are more than 25 billion valid passwords for this one
-
-</aside>
+💡 There are more than 25 billion valid passwords for this one
 
 ## If we have time:
 
@@ -125,3 +144,14 @@ Then run:
 ## Install GHidra
 
 [NationalSecurityAgency/ghidra: Ghidra is a software reverse engineering (SRE) framework](https://github.com/NationalSecurityAgency/ghidra?tab=readme-ov-file#install)
+
+---
+
+# Tools
+
+- https://linux.die.net/man/1/strings
+- https://linux.die.net/man/1/objdump
+- https://linux.die.net/man/1/strace
+- https://github.com/NationalSecurityAgency/ghidra
+- https://github.com/LaurieWired/GhidraMCP
+- https://hex-rays.com/ida-free
