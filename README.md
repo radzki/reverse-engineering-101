@@ -62,8 +62,6 @@ For our examples, we'll see how even simple password checks can be understood an
 
 ## Walkthrough/Challenge
 
-…
-
 We’ll be performing mainly static analysis.
 
 The beauty of reverse engineering/cracking is that there is not just one correct answer or way to do it. Usually you can achieve the same goal using different techniques, ranging from brute forcing to patching.
